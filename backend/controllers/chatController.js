@@ -2,7 +2,8 @@ exports.chat = async (req, res) => {
     try {
         const { message } = req.body;
 
-        const response = await fetch('http://127.0.0.1:8001/chat', {
+        const aiUrl = process.env.AI_SERVICE_URL || 'http://127.0.0.1:8001';
+        const response = await fetch(`${aiUrl}/chat`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

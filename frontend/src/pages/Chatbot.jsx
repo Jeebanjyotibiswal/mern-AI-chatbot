@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import axios from "axios";
+import API from "../api";
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
@@ -15,7 +15,7 @@ export default function Chatbot() {
     setInput("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/chat/chat", {
+      const res = await API.post("/chat/chat", {
         message: input,
       });
 

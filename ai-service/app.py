@@ -8,10 +8,19 @@ app = FastAPI()
 from dotenv import load_dotenv
 import os
 
-load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
 from groq import Groq
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+# Load environment variables (local fallback)
+if not os.getenv("GROQ_API_KEY"):
+    env_path = os.path.join(os.path.dirname(__file__), "..", ".env")
+    if os.path.exists(env_path):
+        load_dotenv(env_path)
+
+api_key = os.getenv("GROQ_API_KEY")
+if not api_key:
+    print("Warning: GROQ_API_KEY not found in environment.")
+
+client = Groq(api_key=api_key)
 
 def generate_response(message: str) -> str:
     try:
