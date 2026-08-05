@@ -45,14 +45,24 @@ export default function Dashboard() {
           <h2 className="text-4xl font-bold mb-4">Welcome back, {user.name}! 👋</h2>
           <p className="text-gray-400 text-lg mb-8 italic">Your email: {user.email}</p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
               <h3 className="font-semibold text-blue-400 mb-2">Account Status</h3>
               <p className="text-sm text-gray-300">Your account is active and verified.</p>
             </div>
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-              <h3 className="font-semibold text-blue-400 mb-2">Projects</h3>
-              <p className="text-sm text-gray-300">You have no active projects yet.</p>
+              <h3 className="font-semibold text-blue-400 mb-2">Resume Analyzer</h3>
+              <p className="text-sm text-gray-300 mb-3">Use the AI service to review a resume PDF.</p>
+              <a href="/resume-analyzer" className="text-sm font-semibold text-blue-400 hover:text-blue-300">
+                Open Analyzer →
+              </a>
+            </div>
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <h3 className="font-semibold text-blue-400 mb-2">GitHub Analyzer</h3>
+              <p className="text-sm text-gray-300 mb-3">Analyze a GitHub username and inspect repository health.</p>
+              <a href="/github-analyzer" className="text-sm font-semibold text-blue-400 hover:text-blue-300">
+                Open GitHub Analyzer →
+              </a>
             </div>
           </div>
         </motion.div>

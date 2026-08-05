@@ -1,14 +1,16 @@
 services:
-  # AI Service (FastAPI)
+  # AI Service (Flask)
   - type: web
     name: ai-service
     runtime: python
     rootDir: ai-service
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn app:app --host 0.0.0.0 --port 5000
     envVars:
       - key: GROQ_API_KEY
         sync: false # Set in Render dashboard
+      - key: PORT
+        value: 5000
 
   # Backend (Node.js)
   - type: web
@@ -20,13 +22,13 @@ services:
     envVars:
       - key: MONGO_URI
         sync: false # Set in Render dashboard
-      - key: AI_SERVICE_URL
+      - key: AI_URL
         fromService:
           type: web
           name: ai-service
           property: host
 
-  # Frontend (Static Site)
+  # Frontend (Static Site - Vite)
   - type: static
     name: mern-frontend
     runtime: static
@@ -34,9 +36,8 @@ services:
     buildCommand: npm install && npm run build
     publishDir: dist
     envVars:
-      - key: VITE_API_URL
+      - key: VITE_BACKEND_URL
         fromService:
           type: web
           name: mern-backend
           property: host
-        suffix: /api

@@ -15,7 +15,7 @@ export default function Chatbot() {
     setInput("");
 
     try {
-      const res = await API.post("/chat/chat", {
+      const res = await API.post("chat/chat", {
         message: input,
       });
 

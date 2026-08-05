@@ -4,6 +4,8 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Chatbot from './pages/Chatbot';
+import ResumeAnalyzer from './pages/ResumeAnalyzer';
+import GithubAnalyzer from './pages/GithubAnalyzer';
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/chatbot" element={<Chatbot />} />
+                <Route path="/resume-analyzer" element={<ResumeAnalyzer />} />
+                <Route path="/github-analyzer" element={<GithubAnalyzer />} />
             </Routes>
         </BrowserRouter>
     );
